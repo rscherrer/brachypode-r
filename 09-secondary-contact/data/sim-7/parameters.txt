@@ -1,0 +1,24 @@
+popsize 100
+pgood 5 0.4 0.2 0.2 0.2 0.2
+capacities 100 2000
+stress 5 0
+maxgrowth 2
+steep 5
+dispersal 0.0001
+mutation 0.0001
+nchrom 1
+nloci 100
+effect 0.1
+allfreq 0.6
+tradeoff 0.1
+selfing 1
+recombination 1
+tend 20000
+tsave 100
+sow 1
+loadarch 0
+savepars 1
+savelog 0
+savearch 1
+talkative 1
+choose 0

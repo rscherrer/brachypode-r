@@ -1,0 +1,3 @@
+## css-coexistence
+
+Here we run a coexistence analysis across parameter space: for each parameter combination where two alternative CSSs were found, we look at whether the two strategies can coexist. We do so by finding out the equilibrium densities of both morphs when "grown" together. Note that this analysis does not allow both morphs to evolve once placed together, and so may tell us only part of the story when it comes to the coexistence of two strategies (see our analysis of mutual invasibility across parameter space for a study of coexistence that takes into account dimorphic evolution).
