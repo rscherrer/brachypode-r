@@ -4,7 +4,7 @@ This repository contains the results of the analyses of the [brachypode](https:/
 
 ## Prerequisites
 
-To reproduce this study the following are needed:
+The code in this repository was run on Ubuntu Linux 20.04 LTS, but should run on other platforms too. To re-run our analyses the following are needed:
 
 * R version ...
 
