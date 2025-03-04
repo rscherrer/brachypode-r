@@ -1,10 +1,12 @@
 # brachypode-results
 
-This repository contains the results of the analyses of the [brachypode](https://github.com/rscherrer/brachypode) project (both with deterministic tools and simulations).
+This repository contains the results of the analyses of the [brachypode](https://github.com/rscherrer/brachypode) project.
 
 ## Prerequisites
 
-To reproduce this study the following are needed.
+To reproduce this study the following are needed:
+
+* R version ...
 
 ### R packages
 
@@ -13,9 +15,9 @@ To reproduce this study the following are needed.
 * [brachypoder](https://github.com/rscherrer/brachypoder)
 * ...
 
-## Specifications
+## Data
 
-The simulations present in this repository were generated with brachypode version 1.0.
+The simulations present in this repository were generated with **brachypode version 1.0**.
 
 The executable was compiled on with the following specifications:
 
