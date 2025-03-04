@@ -22,7 +22,7 @@ The simulations present in this repository were generated with **brachypode vers
 The executable was compiled on with the following specifications:
 
 * Plaform: Ubuntu LTS 20.04
-* Compiler: GNU C++ compiler (g++) 9.4.0
+* Compiler: g++ 9.4.0
 * Build system: CMake 3.16.3
 
 The build options were as specified in the following CMake configuration file: 
