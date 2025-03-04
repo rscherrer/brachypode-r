@@ -17,7 +17,13 @@ To reproduce this study the following are needed.
 
 The simulations present in this repository were generated with brachypode version 1.0.
 
-The executable was compiled on Ubuntu LTS 20.04 using the GNU C++ compiler (g++) 9.4.0 and CMake 3.16.3, with build options specified in the following CMake configuration file: 
+The executable was compiled on with the following specifications:
+
+* Plaform: Ubuntu LTS 20.04
+* Compiler: GNU C++ compiler (g++) 9.4.0
+* Build system: CMake 3.16.3
+
+The build options were as specified in the following CMake configuration file: 
 
 ```cmake
 # CMakeLists.txt
