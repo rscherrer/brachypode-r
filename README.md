@@ -1,12 +1,31 @@
 # brachypode-results
 
-This repository contains the results of the analyses of the [brachypode](https://github.com/rscherrer/brachypode) project (both with deterministic tools and simulations).
+This repository contains the results of the analyses of the [brachypode](https://github.com/rscherrer/brachypode) project.
 
-## Specifications
+## Prerequisites
 
-The simulations present in this repository were generated with brachypode version 1.0.
+The code in this repository was run on Ubuntu Linux 20.04 LTS, but should run on other platforms too. To re-run our analyses the following are needed:
 
-The executable was compiled on Ubuntu LTS 20.04 using the GNU C++ compiler (g++) 9.4.0 and CMake 3.16.3, with build options specified in the following CMake configuration file: 
+* R version ...
+
+### R packages
+
+* tidyverse
+* patchwork
+* [brachypoder](https://github.com/rscherrer/brachypoder)
+* ...
+
+## Data
+
+The simulations present in this repository were generated with **brachypode version 1.0**.
+
+The executable was compiled on with the following specifications:
+
+* Plaform: Ubuntu LTS 20.04
+* Compiler: g++ 9.4.0
+* Build system: CMake 3.16.3
+
+The build options were as specified in the following CMake configuration file: 
 
 ```cmake
 # CMakeLists.txt
