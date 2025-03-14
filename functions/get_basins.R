@@ -1,12 +1,19 @@
+# Extract basins of attraction of equilibria from a MIP 
 get_basins <- function(data, maxdist = 0.1, precis = 3, perturb = 0.1) {
+  
+  # data: the MIP data
+  # maxdist: maximum distance between points to say that isoclines cross
+  # precis: precision argument for duplicate removal
+  # perturb: scale of the perturbation to apply to check for convergence
   
   # Extract the coordinates of the isoclines
   l1 <- with(data$clines1, map2(x1, x2, ~ c(.x, .y)))
   l2 <- with(data$clines2, map2(x1, x2, ~ c(.x, .y)))
   
+  # Early exit if needed
   if (length(l1) == 0 | length(l2) == 0) return(NULL)
   
-  # Compute the distances between isoclines (each point with each point of the opposite icocline)
+  # Compute the distances between isoclines (each point with each point of the opposite isocline)
   distdata <- expand_grid(l1, l2) %>%
     mutate(i = seq(n())) %>%
     unnest(c(l1, l2)) %>%

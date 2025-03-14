@@ -1,3 +1,4 @@
+# Function to get model specifications with migration rate
 model4 <- function() {
   
   alist(

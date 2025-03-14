@@ -1,5 +1,9 @@
+# Function to make a mutual invasibility plot
 PLOTMIP <- function(data) {
   
+  # data: a data frame
+  
+  # Plot
   data %>%
     ggplot(aes(x = x1, y = x2, fill = protected)) +
     geom_tile() +

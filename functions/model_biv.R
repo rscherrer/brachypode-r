@@ -1,3 +1,4 @@
+# Function to generate bivariate model specifications
 model_biv <- function() {
   
   alist(

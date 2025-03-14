@@ -1,6 +1,11 @@
 # Compute the densities at the next generation
 get_nextgen_biv <- function(model, pars, x, y, N) {
   
+  # model: bivariate model specifications
+  # pars: parameter values
+  # x, y: trait values
+  # N: population densities
+  
   # Evaluate the parameters
   for (i in seq(pars)) eval(pars[[i]])
   

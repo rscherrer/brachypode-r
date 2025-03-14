@@ -1,3 +1,4 @@
+# Function to generate dimorphic model specifications with non-linear trade-off
 model_di2 <- function() {
   
   # x1: mutant trait value in morph 1

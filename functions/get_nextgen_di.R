@@ -1,6 +1,11 @@
 # Compute the densities at the next generation
 get_nextgen_di <- function(model, pars, x1, x2, N1, N2) {
   
+  # model: the model
+  # pars: parameter values
+  # x1, x2: pair of trait values
+  # N1, N2: vectors of densities for both morphs 
+  
   # Evaluate the parameters
   for (i in seq(pars)) eval(pars[[i]])
   

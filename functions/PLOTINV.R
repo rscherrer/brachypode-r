@@ -1,5 +1,9 @@
+# Function to plot an invasion fitness heatmap
 PLOTINV <- function(data) {
   
+  # data: a data frame
+  
+  # Plot
   data %>%
     ggplot(aes(x = xres, y = x, fill = lambda)) +
     geom_tile() +

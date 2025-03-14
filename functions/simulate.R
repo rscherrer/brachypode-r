@@ -1,3 +1,4 @@
+# Function to simulate trait evolution
 simulate <- function(
 
   model, pars, x, ntimes = 100, init = c(1, 1), tend = 100, twostep = TRUE,
@@ -6,6 +7,22 @@ simulate <- function(
   cpp = FALSE
 
 ) {
+  
+  # model: model specifications
+  # pars: parameter values
+  # x: starting trait value
+  # ntimes: number of time steps
+  # init, tend, twostep, cpp: arguments for demographic equilibrium search
+  # mu: mutation rate
+  # sigma: mutational standard deviation
+  # passon: whether to use previous demographic equilibrium as starting point for new search
+  # extinct: threshold density to consider the population extinct
+  # model_di: dimorphic model specifications if needed
+  # tol: tolerance with which the selection gradient is considered to be zero
+  # branch: type of evolutionary stability check (0 for no branching allowed, 1 for fitness curvature, 2 for mutual invasibility)
+  # dodge: how much to disturb dimorphic system after branching (if applicable)
+  # tol_lambda: tolerance level for mutual invasibility (if type 2 branching)
+  # verbose: whether to display progress
 
   # Number of morphs
   k <- length(x)

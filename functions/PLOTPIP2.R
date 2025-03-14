@@ -1,13 +1,21 @@
+# Function to plot a bivariate PIP
 PLOTPIP2 <- function(data, tol = 0.001) {
   
-  data %>% 
+  # data: a data frame
+  # tol: tolerance for invasion boundaries
+  
+  # Prepare the data
+  data <- data %>% 
     mutate(
       
       lambda = round(lambda / tol) * tol,
       class = if_else(lambda < 1, "< 1", if_else(lambda > 1, "> 1", "= 1")),
       class = factor(class, levels = c("< 1", "= 1", "> 1"))
       
-    ) %>%
+    )
+  
+  # Plot
+  data %>%
     ggplot(aes(x = x, y = y)) +
     geom_tile(aes(fill = class)) +
     scale_fill_manual(values = c("gray20", "gray50", "gray80")) +

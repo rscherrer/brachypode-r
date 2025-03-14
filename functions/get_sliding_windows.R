@@ -1,5 +1,11 @@
+# Function to set up sliding windows for root finding
 get_sliding_windows <- function(from, to, n, size, intervals = TRUE) {
 
+  # from, to: bounds of search space
+  # n: number of segments
+  # size: size of the windows
+  # intervals: whether to return intervals instead of bounds
+  
   # Sequence of breaks
   breaks <- seq(from, to, length.out = n + 1)
 

@@ -1,3 +1,4 @@
+# Function to generate dimorphic model specifications
 model_di <- function() {
   
   # x1: mutant trait value in morph 1

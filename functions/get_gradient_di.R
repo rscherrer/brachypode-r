@@ -1,9 +1,16 @@
+# Function to compute a dimorphic selection gradient
 get_gradient_di <- function(
 
   x1, x2, model, pars, init = rep(1, 4), tend = 100, twostep = TRUE,
   cpp = FALSE, fast = FALSE
 
 ) {
+  
+  # x1, x2: pair of trait values
+  # model: model specifications
+  # pars: parameter values
+  # init, tend, twostep, cpp: arguments for demographc equilibrium search
+  # fast: NOT USED HERE
 
   # Unpack the parameters
   for (i in seq(pars)) eval(pars[[i]])
@@ -18,6 +25,7 @@ get_gradient_di <- function(
   # Evaluate the model at equilibrium
   for (i in seq(model)) eval(model[[i]])
 
+  # Return the pair of selection gradients
   return(c(G1, G2))
 
 }

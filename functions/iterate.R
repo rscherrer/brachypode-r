@@ -1,6 +1,13 @@
 # Iterate the demographic dynamics through time
 iterate <- function(model, pars, x, tend = 100, N0 = c(1, 1)) {
 
+  # model: the demographic model to iterate
+  # pars: parameter values
+  # x: trait value
+  # tend: number of iterations
+  # N0: initial densities (must correspond to the model)
+  
+  # Number of columns
   ncol <- length(N0)
 
   # Setup

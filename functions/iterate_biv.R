@@ -1,5 +1,11 @@
-# Iterate the demographic dynamics through time
+# Iterate the bivariate demographic dynamics through time
 iterate_biv <- function(model, pars, x, y, tend = 100, N0 = c(1, 1)) {
+  
+  # model: model specifications
+  # pars: parameter values
+  # x, y: trait values
+  # tend: number of iteration steps
+  # N0: starting densities
   
   # Setup
   M <- matrix(0, ncol = 2, nrow = tend + 1)

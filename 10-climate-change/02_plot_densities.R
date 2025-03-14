@@ -20,4 +20,4 @@ plot_long <- PLOTFUN("data/long/", tmax = 80000, show_titles = FALSE, show_y = F
 plot <- wrap_plots(plot, plot_long, nrow = 1, widths = c(4, 1))
 
 # Save
-ggsave("plots/climate_change_densities.png", plot, width = 8, height = 8, dpi = 300)
+ggsave("plots/climate_change_densities.png", plot, width = 8, height = 6, dpi = 300)

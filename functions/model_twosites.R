@@ -1,3 +1,4 @@
+# Function to generate model specifications in two sites 
 model_twosites <- function() {
 
   alist(

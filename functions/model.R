@@ -1,3 +1,4 @@
+# Function to generate model specifications
 model <- function() {
   
   alist(

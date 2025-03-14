@@ -1,5 +1,7 @@
+# Function to generate an example parameter list
 get_pars <- function() {
 
+  # List
   alist(
 
     rmax <- 2,

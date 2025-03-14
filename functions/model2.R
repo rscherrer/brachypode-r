@@ -1,3 +1,4 @@
+# Function to generate model specifications with non-linear trade-off
 model2 <- function() {
   
   alist(

@@ -1,3 +1,4 @@
+# Function to get model specifications with phylopatry
 model3 <- function() {
   
   alist(

@@ -1,7 +1,12 @@
+# Function to plot equilibrium densities across trait values
 PLOTDENS <- function(data) {
 
+  # data: a data frame
+  
+  # Number of colors
   n <- length(data$N[[1]])
 
+  # Plot
   data %>%
     unnest(N) %>%
     mutate(name = paste0("N[", seq(n), "]")) %>%
