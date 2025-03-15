@@ -1,5 +1,10 @@
 # Function to plot the results
-PLOTFUN <- function(dir = "data/", tmax = 40000, plot_traits = FALSE, show_titles = TRUE, show_y = TRUE, show_xlab = TRUE, ymax = 300) {
+PLOTFUN <- function(
+    
+  dir = "data/", tmax = 40000, plot_traits = FALSE, show_titles = TRUE, 
+  show_y = TRUE, show_xlab = TRUE, ymax = 300, rm_legend = TRUE
+  
+) {
   
   # dir: the directory where to find all the sets of simulations
   # tmax: end of the simulation
@@ -53,10 +58,10 @@ PLOTFUN <- function(dir = "data/", tmax = 40000, plot_traits = FALSE, show_title
     # Set the plot up
     plot <- data %>%
       mutate(patch = if_else(patch == 0, "UF", "F")) %>%
-      ggplot(aes(x = time / 1000, y = get(ifelse(plot_traits, "x", "n")), color = factor(patch))) 
+      ggplot(aes(x = time / 1000, y = get(ifelse(plot_traits, "x", "n")))) 
     
     # Add layer depending on what we are plotting
-    plot <- if (plot_traits) plot + geom_point() else plot + geom_line()
+    plot <- if (plot_traits) plot + geom_point(aes(color = factor(patch))) else plot + geom_line(aes(color = factor(patch)))
     
     # Prepare label
     ylab <- ifelse(plot_traits, "Stress tolerance (x)", "No. individuals")
@@ -70,7 +75,7 @@ PLOTFUN <- function(dir = "data/", tmax = 40000, plot_traits = FALSE, show_title
       ylim(c(0, ymax)) +
       ylab(ylab) +
       geom_vline(xintercept = 10, linetype = 4) +
-      geom_rect(aes(xmin = tend / 1000, color = NULL, x = NULL, y = NULL), data = tdata, xmax = tmax / 1000, ymin = 0, ymax = ymax, fill = "gray20", alpha = 0.5)
+      geom_rect(aes(xmin = tend / 1000, x = NULL, y = NULL), data = tdata, xmax = tmax / 1000, ymin = 0, ymax = ymax, fill = "gray20", alpha = 0.5)
     
     # Remove y-axis if needed
     if (!show_y) plot <- plot + rm_axis("y")
@@ -97,7 +102,7 @@ PLOTFUN <- function(dir = "data/", tmax = 40000, plot_traits = FALSE, show_title
   # Further customization
   plots[2:4] <- map(plots[2:4], ~ .x + rm_strips("x"))
   plots[1:3] <- map(plots[1:3], ~ .x + rm_axis("x"))
-  plots <- map(plots, ~ .x + theme(legend.position = "none"))
+  if (rm_legend) plots <- map(plots, ~ .x + theme(legend.position = "none"))
   plots <- map(plots, ~ .x + scale_x_continuous(breaks = seq(0, tmax / 1000, length.out = 5)))
   
   # Combine

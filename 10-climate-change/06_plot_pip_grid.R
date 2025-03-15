@@ -25,8 +25,7 @@ pars <- alist(
   a <- 5,
   theta1 <- 0,
   theta2 <- 5,
-  c <- 0.5,
-  K1 <- K1 + (K2 - K1) * theta1 / theta2
+  c <- 0.5
   
 )
 
@@ -47,4 +46,4 @@ plot <- plot_pip_grid(
 )
 
 # Save
-ggsave("plots/climate_change_pips.png", plot, width = 7, height = 6.5, dpi = 300)
+ggsave("plots/climate_change_pip_grid.png", plot, width = 7, height = 6.5, dpi = 300)
