@@ -1,51 +1,7 @@
-# brachypode-results
+# brachypode-r
 
-This repository contains the results of the analyses of the [brachypode](https://github.com/rscherrer/brachypode) project.
+This is the [R](https://www.r-project.org/) code used to perform the analyses of the [brachypode](https://github.com/rscherrer/brachypode) project.
 
-## Prerequisites
+## Description
 
-The code in this repository was run on Ubuntu Linux 20.04 LTS, but should run on other platforms too. To re-run our analyses the following are needed:
-
-* R version ...
-
-### R packages
-
-* tidyverse
-* patchwork
-* [brachypoder](https://github.com/rscherrer/brachypoder)
-* ...
-
-## Data
-
-The simulations present in this repository were generated with **brachypode version 1.0**.
-
-The executable was compiled on with the following specifications:
-
-* Plaform: Ubuntu LTS 20.04
-* Compiler: g++ 9.4.0
-* Build system: CMake 3.16.3
-
-The build options were as specified in the following CMake configuration file: 
-
-```cmake
-# CMakeLists.txt
-
-# CMake
-cmake_minimum_required(VERSION 3.16)
-
-# Project name
-project(brachypode)
-
-# C++ standard
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED)
-
-# Boilerplate
-set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
-set(CMAKE_INSTALL_PREFIX ${CMAKE_SOURCE_DIR})
-
-# Source code
-add_subdirectory(src)
-```
-
-See the [repository](https://github.com/rscherrer/brachypode) of the source code for an example setup on how to build the program according to these specifications. 
+The code base consists in a series of [RStudio](https://posit.co/download/rstudio-desktop/) projects, each running a specific analysis and numbered according to the order in which each analysis should be run (some analyses may produce data used as output in subsequent analyses). Each project contains scripts whose names are numbered, again, according to the order they should be run for full reproducibility. The `functions` folder contains code used across analyses. Certain project folders may contain their own local `functions` folder, for code that only they need. The simulation data are assumed to be in a `data/` folder, placed in the root of this repository, but not uploaded to GitHub (the data will be made available upon publication). Some projects possess their own local `data/` folder, to store data (in `.rds` files) generated during the analysis.

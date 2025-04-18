@@ -1,18 +1,17 @@
-# Here we look at the effect of genee flow (in the form of outcrossing) on the
-# divergence of morphs.
+## Here we look at the effect of genee flow (in the form of outcrossing) on the
+## divergence of morphs.
 
 rm(list = ls())
 
 library(tidyverse)
 library(patchwork)
-library(brachypoder)
 
 theme_set(theme_classic())
 
-for (f in list.files("../functions", full.names = TRUE)) source(f)
+source("../functions.R")
 
 # For each simulation...
-data <- map_dfr(list.dirs("data")[-1], function(dir) {
+data <- map_dfr(list.dirs("../data")[-1], function(dir) {
 
   # Read the parameters
   pars <- read_parameters(dir)

@@ -1,4 +1,4 @@
-# Here we map the various equilibria we found across parameter space.
+## Here we map the various equilibria we found across parameter space.
 
 rm(list = ls())
 
@@ -7,7 +7,7 @@ library(rlang)
 
 theme_set(theme_classic())
 
-for (f in list.files("../functions", full.names = TRUE)) source(f)
+source("../functions.R")
 
 # Parameter values
 pars <- alist(

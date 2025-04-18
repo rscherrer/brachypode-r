@@ -1,17 +1,16 @@
-# Here we make a figure explaining our climate change experiment.
+## Here we make a figure explaining our climate change experiment.
 
 rm(list = ls())
 
 library(tidyverse)
 library(patchwork)
-library(brachypoder)
 
 theme_set(theme_classic())
 
-for (f in list.files("../functions", full.names = TRUE)) source(f)
+source("../functions.R")
 
 # Load an example simulation
-dir <- "data/standard/stress-increase-K2-100/sim-5"
+dir <- "../data/standard/stress-increase-K2-100/sim-5"
 
 # Plot individual trait values through time
 plot1 <- read_individual_data(dir) %>%

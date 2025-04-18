@@ -1,21 +1,20 @@
-# Here we map the area of dimorphic trait space that converges towards a dimorphic
-# equilibrium, and we plot it on top of the MIP.
+## Here we map the area of dimorphic trait space that converges towards a dimorphic
+## equilibrium, and we plot it on top of the MIP.
 
 rm(list = ls())
 
 library(tidyverse)
-library(brachypoder)
 library(rlang)
 library(Rcpp)
 
 # C++ stuff
-sourceCpp("../src/iterate.cpp")
-sourceCpp("../src/iterate_di.cpp")
+sourceCpp("../functions/Adaptive/src/iterate.cpp")
+sourceCpp("../functions/Adaptive/src/iterate_di.cpp")
 
 theme_set(theme_classic())
 
 # Load functions
-for (f in list.files("../functions", full.names = TRUE)) source(f)
+source("../functions.R")
 
 # Parameters
 pars <- alist(

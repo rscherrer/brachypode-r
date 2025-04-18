@@ -1,18 +1,17 @@
-# Here we plot what goes on in metapopulations with many sites.
+## Here we plot what goes on in metapopulations with many sites.
 
 rm(list = ls())
 
 library(tidyverse)
 library(patchwork)
-library(brachypoder)
 library(ggbeeswarm)
 
 theme_set(theme_classic())
 
-for (f in list.files("../functions", full.names = TRUE)) source(f)
+source("../functions.R")
 
 # For each simulation...
-data <- map_dfr(list.dirs("data")[-1], function(dir) {
+data <- map_dfr(list.dirs("../data")[-1], function(dir) {
 
   # Read parameter values
   pars <- read_parameters(dir)
@@ -57,7 +56,7 @@ data$plot[[2]] <- data$plot[[2]] + rm_strips("x")
 P1 <- wrap_plots(data$plot, ncol = 1)
 
 # Now, again for each simulation...
-data2 <- map_dfr(list.dirs("data")[-1], function(dir) {
+data2 <- map_dfr(list.dirs("../data")[-1], function(dir) {
 
   # Read the parameter values
   pars <- read_parameters(dir)

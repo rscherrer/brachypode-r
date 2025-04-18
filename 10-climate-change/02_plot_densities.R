@@ -1,20 +1,19 @@
-# Here we plot the numbers of individuals through time across
-# simulations.
+## Here we plot the numbers of individuals through time across
+## simulations.
 
 rm(list = ls())
 
 library(tidyverse)
 library(patchwork)
-library(brachypoder)
 
 theme_set(theme_classic())
 
-for (f in list.files("../functions", full.names = TRUE)) source(f)
+source("../functions.R")
 for (f in list.files("functions", full.names = TRUE)) source(f)
 
 # Make plots
-plot <- PLOTFUN("data/standard/", tmax = 40000)
-plot_long <- PLOTFUN("data/long/", tmax = 80000, show_titles = FALSE, show_y = FALSE, show_xlab = FALSE, rm_legend = FALSE)
+plot <- PLOTFUN("../data/standard/", tmax = 40000)
+plot_long <- PLOTFUN("../data/long/", tmax = 80000, show_titles = FALSE, show_y = FALSE, show_xlab = FALSE, rm_legend = FALSE)
 
 # Combine
 plot <- wrap_plots(plot, plot_long, nrow = 1, widths = c(4, 1), guides = "collect")

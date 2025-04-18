@@ -1,6 +1,6 @@
-# Here we are making a series of PIPs across values of environmental stress
-# and shrub cover to understand what traps the population in an extinction
-# vortex when the shrub cover goes down.
+## Here we are making a series of PIPs across values of environmental stress
+## and shrub cover to understand what traps the population in an extinction
+## vortex when the shrub cover goes down.
 
 rm(list = ls())
 
@@ -10,10 +10,10 @@ library(Rcpp)
 
 theme_set(theme_classic())
 
-for (f in list.files("../functions", full.names = TRUE)) source(f)
+source("../functions.R")
 
 # Load C++ code
-sourceCpp("../src/iterate.cpp")
+sourceCpp("../functions/Adaptive/src/iterate.cpp")
 
 # Parameter values
 pars <- alist(

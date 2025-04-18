@@ -1,14 +1,14 @@
-# Here is a function to find a bivariate equilibrium strategy ({x1, x2} such
-# that the bivariate gradient is zero), but it does not work so well. Plus, 
-# I have not found a convenient way to make it find multiple equilibria, so I
-# have not added it to plot_mip.
+## Here is a function to find a bivariate equilibrium strategy ({x1, x2} such
+## that the bivariate gradient is zero), but it does not work so well. Plus, 
+## I have not found a convenient way to make it find multiple equilibria, so I
+## have not added it to plot_mip.
 
 rm(list = ls())
 
 library(tidyverse)
 library(rlang)
 
-for (f in list.files("../functions", full.names = TRUE)) source(f)
+source("../functions.R")
 
 # Parameter values
 pars <- alist(

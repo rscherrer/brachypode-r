@@ -1,8 +1,8 @@
-# Here we show how the PIP changes over the course of the climate change
-# period for each of the three kinds of scenarios (no macro-mutations cause
-# that one is the same as shrub cover shrinkage from an adaptive landscape
-# perspective). We add example simulations on top of the plot for
-# illustrative purpose.
+## Here we show how the PIP changes over the course of the climate change
+## period for each of the three kinds of scenarios (no macro-mutations cause
+## that one is the same as shrub cover shrinkage from an adaptive landscape
+## perspective). We add example simulations on top of the plot for
+## illustrative purpose.
 
 rm(list = ls())
 
@@ -10,15 +10,14 @@ library(tidyverse)
 library(rlang)
 library(Rcpp)
 library(patchwork)
-library(brachypoder)
 
 theme_set(theme_classic())
 
-for (f in list.files("../functions", full.names = TRUE)) source(f)
-for (f in list.files("./functions", full.names = TRUE)) source(f)
+source("../functions.R")
+source("../locals.R")
 
 # Load C++ code
-sourceCpp("../src/iterate.cpp")
+sourceCpp("../functions/Adaptive/src/iterate.cpp")
 
 # Parameter values
 pars0 <- alist(
@@ -224,9 +223,9 @@ import_sim_plot <- function(path, ymax = NULL, times = NULL) {
 }
 
 # Import simulation plots 
-p1.1 <- import_sim_plot("data/standard/stress-increase-K2-100/sim-5", ymax = 10, times = times)
-p2.1 <- import_sim_plot("data/standard/landscape-deterioration/sim-5", ymax = 10, times = times)
-p3.1 <- import_sim_plot("data/standard/cover-shrinkage-K2-100/sim-5", ymax = 10, times = times) 
+p1.1 <- import_sim_plot("../data/standard/stress-increase-K2-100/sim-5", ymax = 10, times = times)
+p2.1 <- import_sim_plot("../data/standard/landscape-deterioration/sim-5", ymax = 10, times = times)
+p3.1 <- import_sim_plot("../data/standard/cover-shrinkage-K2-100/sim-5", ymax = 10, times = times) 
 
 # Tweak
 p2.1 <- p2.1 + rm_axis("y")

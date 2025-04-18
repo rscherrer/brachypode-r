@@ -1,5 +1,5 @@
-# Here we explore PIPs across different rates of migration and dispersal between
-# the patches (just for eyeballing, we do not save figures).
+## Here we explore PIPs across different rates of migration and dispersal between
+## the patches (just for eyeballing, we do not save figures).
 
 rm(list = ls())
 
@@ -9,7 +9,7 @@ library(rlang)
 
 theme_set(theme_classic())
 
-for (f in list.files("../functions", full.names = TRUE)) source(f)
+source("../functions.R")
 
 # Parameters
 pars <- alist(

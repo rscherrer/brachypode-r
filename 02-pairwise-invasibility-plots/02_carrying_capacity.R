@@ -1,4 +1,4 @@
-# Here we look at the effect of increasing asymmetry in carrying capacity.
+## Here we look at the effect of increasing asymmetry in carrying capacity.
 
 rm(list = ls())
 
@@ -8,7 +8,7 @@ library(rlang)
 
 theme_set(theme_classic())
 
-for (f in list.files("../functions", full.names = TRUE)) source(f)
+source("../functions.R")
 
 # Parameter values
 pars <- alist(

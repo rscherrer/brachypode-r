@@ -1,20 +1,19 @@
-# Here we plot the traits of individuals through time across
-# simulations.
+## Here we plot the traits of individuals through time across
+## simulations.
 
 rm(list = ls())
 
 library(tidyverse)
 library(patchwork)
-library(brachypoder)
 
 theme_set(theme_classic())
 
-for (f in list.files("../functions", full.names = TRUE)) source(f)
-for (f in list.files("functions", full.names = TRUE)) source(f)
+source("../functions.R")
+source("../locals.R")
 
 # Make plots
-plot <- PLOTFUN("data/standard/", tmax = 40000, plot_traits = TRUE, ymax = 20)
-plot_long <- PLOTFUN("data/long/", tmax = 80000, plot_traits = TRUE, show_titles = FALSE, show_y = FALSE, show_xlab = FALSE, ymax = 20, rm_legend = FALSE)
+plot <- PLOTFUN("../data/standard/", tmax = 40000, plot_traits = TRUE, ymax = 20)
+plot_long <- PLOTFUN("../data/long/", tmax = 80000, plot_traits = TRUE, show_titles = FALSE, show_y = FALSE, show_xlab = FALSE, ymax = 20, rm_legend = FALSE)
 
 # Resize plots
 plot <- plot + plot_layout(heights = c(1, 1, 1, 2))

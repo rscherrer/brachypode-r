@@ -1,4 +1,4 @@
-# Here we show some demographic dynamics under the model.
+## Here we show some demographic dynamics under the model.
 
 rm(list = ls())
 
@@ -8,7 +8,7 @@ library(ggridges)
 
 theme_set(theme_classic())
 
-for (f in list.files("../functions", full.names = TRUE)) source(f)
+source("../functions.R")
 
 # Parameter values
 pars <- alist(

@@ -1,18 +1,17 @@
-# Here we look at the persistence time of various starting strategies
-# in a stressful environmnent.
+## Here we look at the persistence time of various starting strategies
+## in a stressful environmnent.
 
 rm(list = ls())
 
 library(tidyverse)
-library(brachypoder)
 library(patchwork)
 
-for (f in list.files("../functions", full.names = TRUE)) source(f)
+source("../functions.R")
 
 theme_set(theme_classic())
 
 # For each simulation...
-data <- map_dfr(list.dirs("data")[-1], function(dir) {
+data <- map_dfr(list.dirs("../data")[-1], function(dir) {
 
   # Read the parameters
   pars <- read_parameters(dir)

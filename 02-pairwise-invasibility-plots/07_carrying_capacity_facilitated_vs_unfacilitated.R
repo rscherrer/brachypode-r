@@ -1,5 +1,5 @@
-# Here we generate a series of PIPs showing how branching points break down as
-# we modify the asymmetry in carrying capacity between the two habitat patches. 
+## Here we generate a series of PIPs showing how branching points break down as
+## we modify the asymmetry in carrying capacity between the two habitat patches. 
 
 rm(list = ls())
 
@@ -9,7 +9,7 @@ library(rlang)
 
 theme_set(theme_classic())
 
-for (f in list.files("../functions", full.names = TRUE)) source(f)
+source("../functions.R")
 
 # Parameter values
 pars <- alist(

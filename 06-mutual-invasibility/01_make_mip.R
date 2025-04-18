@@ -1,5 +1,5 @@
-# Here we generate a mutual invasibility plot for a particular combination
-# of parameters.
+## Here we generate a mutual invasibility plot for a particular combination
+## of parameters.
 
 rm(list = ls())
 
@@ -8,11 +8,11 @@ library(rlang)
 library(Rcpp)
 
 # C++ stuff
-sourceCpp("../src/iterate.cpp")
-sourceCpp("../src/iterate_di.cpp")
+sourceCpp("../functions/Adaptive/src/iterate.cpp")
+sourceCpp("../functions/Adaptive/src/iterate_di.cpp")
 
 # Load functions
-for (f in list.files("../functions", full.names = TRUE)) source(f)
+source("../functions.R")
 
 # Parameters
 pars <- alist(

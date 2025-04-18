@@ -1,15 +1,14 @@
-# Here we plot the traits of individuals through time across
-# a specific set of simulations with varying mutation rates.
+## Here we plot the traits of individuals through time across
+## a specific set of simulations with varying mutation rates.
 
 rm(list = ls())
 
 library(tidyverse)
 library(patchwork)
-library(brachypoder)
 
 theme_set(theme_classic())
 
-for (f in list.files("../functions", full.names = TRUE)) source(f)
+source("../functions.R")
 source("functions/get_scenario_names.R")
 
 # Plotting function
@@ -20,8 +19,8 @@ PLOTFUN <- function(set, tmax = 40000, ymax = 10) {
   # ymax: limit of the y-axis
   
   # Locate simulation directories
-  dirs <- str_c("data/standard/", set, "/sim-5")
-  dirs <- c(dirs, list.dirs(str_c("data/highmut/", set), full.names = TRUE)[-1])
+  dirs <- str_c("../data/standard/", set, "/sim-5")
+  dirs <- c(dirs, list.dirs(str_c("../data/highmut/", set), full.names = TRUE)[-1])
   
   # For each directory...
   data <- map_dfr(dirs, function(dir) {

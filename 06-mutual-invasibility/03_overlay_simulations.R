@@ -1,4 +1,4 @@
-# Here we load the MIP and overlay the simulations on top of it.
+## Here we load the MIP and overlay the simulations on top of it.
 
 rm(list = ls())
 
@@ -8,7 +8,7 @@ library(patchwork)
 theme_set(theme_classic())
 
 # Load functions
-for (f in list.files("../functions", full.names = TRUE)) source(f)
+source("../functions.R")
 
 # Read the simulated data
 simdata <- readRDS("data/simdata.rds")

@@ -1,4 +1,4 @@
-# Here we generate PIPs across trade-off curves and carrying capacities.
+## Here we generate PIPs across trade-off curves and carrying capacities.
 
 rm(list = ls())
 
@@ -7,7 +7,7 @@ library(rlang)
 
 theme_set(theme_classic())
 
-for (f in list.files("../functions", full.names = TRUE)) source(f)
+source("../functions.R")
 
 # Parameter values
 pars <- alist(

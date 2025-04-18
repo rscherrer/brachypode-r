@@ -1,13 +1,13 @@
-# Here we run a coexistence analysis across parameter space: for each
-# parameter combination where two alternative CSSs were found, we look at
-# whether the two strategies can coexist.
+## Here we run a coexistence analysis across parameter space: for each
+## parameter combination where two alternative CSSs were found, we look at
+## whether the two strategies can coexist.
 
 rm(list = ls())
 
 library(tidyverse)
 library(rlang)
 
-for (f in list.files("../functions", full.names = TRUE)) source(f)
+source("../functions.R")
 
 # Parameter values
 pars <- alist(
@@ -24,7 +24,7 @@ pars <- alist(
 )
 
 # Read parameter space data (used later for background image)
-bdata <- readRDS("../004-equilibrium-search/data/data.rds")
+bdata <- readRDS("../04-equilibrium-search/data/data.rds")
 
 # Wrangle
 colnames(bdata)[1:4] <- c("theta2", "epsilon", "K2", "c")

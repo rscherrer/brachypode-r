@@ -1,17 +1,16 @@
-# Here we produce a figure that summarizes some of the parameters that 
-# determine evolutionary branching, and illustrate what happens then with
-# some simulations.
+## Here we produce a figure that summarizes some of the parameters that 
+## determine evolutionary branching, and illustrate what happens then with
+## some simulations.
 
 rm(list = ls())
 
 library(tidyverse)
 library(patchwork)
-library(brachypoder)
 library(rlang)
 
 theme_set(theme_classic())
 
-for (f in list.files("../functions", full.names = TRUE)) source(f)
+source("../functions.R")
 
 # Parameter values
 pars <- alist(
@@ -40,7 +39,7 @@ p1 <- plot_pip_transect(
 )
 
 # For each simulation...
-data <- map_dfr(list.dirs("data/overview")[-1], function(dir) {
+data <- map_dfr(list.dirs("../data/overview")[-1], function(dir) {
   
   # Read the parameters
   pars <- read_parameters(dir)
@@ -62,7 +61,7 @@ p2 <- data %>%
   labs(color = parse(text = "p[0]"))
 
 # Read census data in one simulation in particular (one with branching)
-data2 <- read_patch_size_data("data/overview/sim-6")
+data2 <- read_patch_size_data("../data/overview/sim-6")
 
 # Plot the numbers of individuals in each patch through time
 p3 <- data2 %>%

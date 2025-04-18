@@ -1,5 +1,5 @@
-# Here we plot the outcomes of equilibrium search across parameter space, but
-# for different non-linear trade-off curves.
+## Here we plot the outcomes of equilibrium search across parameter space, but
+## for different non-linear trade-off curves.
 
 rm(list = ls())
 
@@ -8,7 +8,7 @@ library(rlang)
 
 theme_set(theme_classic())
 
-for (f in list.files("../functions", full.names = TRUE)) source(f)
+source("../functions.R")
 
 # Parameter values
 pars <- alist(

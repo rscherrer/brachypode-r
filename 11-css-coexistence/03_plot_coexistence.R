@@ -1,6 +1,6 @@
-# Here we show the results of the coexistence analysis by overlaying pie charts,
-# showing the equilibrium abundance of both morphs (and thus whether they can
-# coexist) on top of our parameter space plot.
+## Here we show the results of the coexistence analysis by overlaying pie charts,
+## showing the equilibrium abundance of both morphs (and thus whether they can
+## coexist) on top of our parameter space plot.
 
 rm(list = ls())
 
@@ -11,7 +11,7 @@ library(ggnewscale)
 
 theme_set(theme_classic())
 
-for (f in list.files("../functions", full.names = TRUE)) source(f)
+source("../functions.R")
 
 # Parameter values
 pars <- alist(

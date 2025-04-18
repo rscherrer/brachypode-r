@@ -1,4 +1,4 @@
-# Here we plot the results of the coexistence analysis across parameter space.
+## Here we plot the results of the coexistence analysis across parameter space.
 
 rm(list = ls())
 

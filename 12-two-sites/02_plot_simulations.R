@@ -1,16 +1,15 @@
-# Here we plot some corresponding simulations.
+## Here we plot some corresponding simulations.
 
 rm(list = ls())
 
 library(tidyverse)
-library(brachypoder)
 
 theme_set(theme_classic())
 
-for (f in list.files("../functions", full.names = TRUE)) source(f)
+source("../functions.R")
 
 # For each simulation...
-data <- map_dfr(list.dirs("data")[-1], function(dir) {
+data <- map_dfr(list.dirs("../data")[-1], function(dir) {
 
   # Read the parameters
   pars <- read_parameters(dir)

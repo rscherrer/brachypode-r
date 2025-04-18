@@ -1,5 +1,5 @@
-# Here we explore dimorphic coexistence across many parameter combinations,
-# and compute some relevant summary statistics for each of those.
+## Here we explore dimorphic coexistence across many parameter combinations,
+## and compute some relevant summary statistics for each of those.
 
 rm(list = ls())
 
@@ -8,11 +8,11 @@ library(rlang)
 library(Rcpp)
 
 # C++ stuff
-sourceCpp("../src/iterate.cpp")
-sourceCpp("../src/iterate_di.cpp")
+sourceCpp("../functions/Adaptive/src/iterate.cpp")
+sourceCpp("../functions/Adaptive/src/iterate_di.cpp")
 
 # Load functions
-for (f in list.files("../functions", full.names = TRUE)) source(f)
+source("../functions.R")
 
 # Parameters
 pars <- alist(
@@ -29,7 +29,7 @@ pars <- alist(
 )
 
 # Load parameter space mapping
-data <- readRDS("../004-equilibrium-search/data/data.rds")
+data <- readRDS("../04-equilibrium-search/data/data.rds")
 
 # Keep only a portion of it
 data <- data %>% filter(val3 <= 500, val4 <= 0.5)
@@ -224,7 +224,7 @@ data <- data %>%
   )
 
 # Add branching point data
-data <- readRDS("../004-equilibrium-search/data/data.rds") %>% 
+data <- readRDS("../04-equilibrium-search/data/data.rds") %>% 
   select(val1:val4, BP) %>% 
   right_join(data) %>%
   mutate(BP = ifelse(BP, "BP", "No BP"))

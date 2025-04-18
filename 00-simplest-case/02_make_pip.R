@@ -1,5 +1,5 @@
-# Here we make a PIP, trying different ways of computing the demographic
-# equilibrium.
+## Here we make a PIP, trying different ways of computing the demographic
+## equilibrium.
 
 rm(list = ls())
 
@@ -9,7 +9,7 @@ library(rlang)
 
 theme_set(theme_classic())
 
-for (f in list.files("../functions", full.names = TRUE)) source(f)
+source("../functions.R")
 
 # Parameter values
 pars <- alist(

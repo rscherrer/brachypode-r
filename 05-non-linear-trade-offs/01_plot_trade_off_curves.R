@@ -1,4 +1,4 @@
-# Here we plot various non-linear trade-off curves.
+## Here we plot various non-linear trade-off curves.
 
 rm(list = ls())
 

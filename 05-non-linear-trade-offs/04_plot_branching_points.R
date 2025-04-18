@@ -1,15 +1,14 @@
-# Here explore some branching points in particular.
+## Here we explore some branching points in particular.
 
 rm(list = ls())
 
 library(tidyverse)
 library(patchwork)
 library(rlang)
-library(brachypoder)
 
 theme_set(theme_classic())
 
-for (f in list.files("../functions", full.names = TRUE)) source(f)
+source("../functions.R")
 
 # Parameter values
 pars <- alist(
@@ -55,7 +54,7 @@ plot2 <- plot_mip_transect(
 )
 
 # For each simulation...
-simdata <- map_dfr(list.dirs("data")[-1], function(dir) {
+simdata <- map_dfr(list.dirs("../data")[-1], function(dir) {
   
   # Read trait values
   read_individual_data(dir) %>%

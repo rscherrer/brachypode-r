@@ -1,6 +1,6 @@
-# Here we explore the demographics of tolerant and sensitive morph when grown
-# together under a particular parameter combination and various initial densities
-# of both morphs.
+## Here we explore the demographics of tolerant and sensitive morph when grown
+## together under a particular parameter combination and various initial densities
+## of both morphs.
 
 rm(list = ls())
 
@@ -8,7 +8,7 @@ library(tidyverse)
 
 theme_set(theme_classic())
 
-for (f in list.files("../functions", full.names = TRUE)) source(f)
+source("../functions.R")
 
 # Parameter values
 pars <- alist(
