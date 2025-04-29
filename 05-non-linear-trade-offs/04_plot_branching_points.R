@@ -54,7 +54,7 @@ plot2 <- plot_mip_transect(
 )
 
 # For each simulation...
-simdata <- map_dfr(list.dirs("../data")[-1], function(dir) {
+simdata <- map_dfr(list.dirs("../data/non-linear-trade-offs")[-1], function(dir) {
   
   # Read trait values
   read_individual_data(dir) %>%

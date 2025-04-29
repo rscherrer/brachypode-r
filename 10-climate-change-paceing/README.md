@@ -1,0 +1,3 @@
+## climate-change-paceing
+
+Here we run subsequent analyses for our climate change experiment, where we try to illustrate that extinction in the whole landscape deterioration scenario occurs because of distance to the nearest stress-tolerant equilibrium in phenotype space, and that the population becomes rescued when the pace of environmental change in the unfacilitated patches becomes similar to the scenario with stress increase only underneath the shrubs.

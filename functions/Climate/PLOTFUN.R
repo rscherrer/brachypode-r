@@ -1,7 +1,7 @@
 # Function to plot the results
 PLOTFUN <- function(
     
-  dir = "../data/", tmax = 40000, plot_traits = FALSE, show_titles = TRUE, 
+  dir = "../data/climate-change/", tmax = 40000, plot_traits = FALSE, show_titles = TRUE, 
   show_y = TRUE, show_xlab = TRUE, ymax = 300, rm_legend = TRUE
   
 ) {
@@ -85,7 +85,7 @@ PLOTFUN <- function(
   })
   
   # Update names
-  names(plots) <- str_remove(sets, "../data/")
+  names(plots) <- str_remove(sets, "../data/climate-change/")
   
   # Update facets and labels
   plots <- map(plots, ~ .x + facet_grid(. ~ twarming_lab, labeller = label_parsed))

@@ -9,11 +9,10 @@ library(patchwork)
 theme_set(theme_classic())
 
 source("../functions.R")
-source("../locals.R")
 
 # Make plots
-plot <- PLOTFUN("../data/standard/", tmax = 40000, plot_traits = TRUE, ymax = 20)
-plot_long <- PLOTFUN("../data/long/", tmax = 80000, plot_traits = TRUE, show_titles = FALSE, show_y = FALSE, show_xlab = FALSE, ymax = 20, rm_legend = FALSE)
+plot <- PLOTFUN("../data/climate-change/standard/", tmax = 40000, plot_traits = TRUE, ymax = 20)
+plot_long <- PLOTFUN("../data/climate-change/long/", tmax = 80000, plot_traits = TRUE, show_titles = FALSE, show_y = FALSE, show_xlab = FALSE, ymax = 20, rm_legend = FALSE)
 
 # Resize plots
 plot <- plot + plot_layout(heights = c(1, 1, 1, 2))

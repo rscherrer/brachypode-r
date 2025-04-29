@@ -9,7 +9,6 @@ library(patchwork)
 theme_set(theme_classic())
 
 source("../functions.R")
-source("functions/get_scenario_names.R")
 
 # Plotting function
 PLOTFUN <- function(set, tmax = 40000, ymax = 10) {
@@ -19,8 +18,8 @@ PLOTFUN <- function(set, tmax = 40000, ymax = 10) {
   # ymax: limit of the y-axis
   
   # Locate simulation directories
-  dirs <- str_c("../data/standard/", set, "/sim-5")
-  dirs <- c(dirs, list.dirs(str_c("../data/highmut/", set), full.names = TRUE)[-1])
+  dirs <- str_c("../data/climate-change/standard/", set, "/sim-5")
+  dirs <- c(dirs, list.dirs(str_c("../data/climate-change/highmut/", set), full.names = TRUE)[-1])
   
   # For each directory...
   data <- map_dfr(dirs, function(dir) {

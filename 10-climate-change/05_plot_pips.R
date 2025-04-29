@@ -14,7 +14,6 @@ library(patchwork)
 theme_set(theme_classic())
 
 source("../functions.R")
-source("../locals.R")
 
 # Load C++ code
 sourceCpp("../functions/Adaptive/src/iterate.cpp")
@@ -223,9 +222,9 @@ import_sim_plot <- function(path, ymax = NULL, times = NULL) {
 }
 
 # Import simulation plots 
-p1.1 <- import_sim_plot("../data/standard/stress-increase-K2-100/sim-5", ymax = 10, times = times)
-p2.1 <- import_sim_plot("../data/standard/landscape-deterioration/sim-5", ymax = 10, times = times)
-p3.1 <- import_sim_plot("../data/standard/cover-shrinkage-K2-100/sim-5", ymax = 10, times = times) 
+p1.1 <- import_sim_plot("../data/climate-change/standard/stress-increase-K2-100/sim-5", ymax = 10, times = times)
+p2.1 <- import_sim_plot("../data/climate-change/standard/landscape-deterioration/sim-5", ymax = 10, times = times)
+p3.1 <- import_sim_plot("../data/climate-change/standard/cover-shrinkage-K2-100/sim-5", ymax = 10, times = times) 
 
 # Tweak
 p2.1 <- p2.1 + rm_axis("y")

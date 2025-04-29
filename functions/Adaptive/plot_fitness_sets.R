@@ -6,7 +6,7 @@ plot_fitness_sets <- function(
   use_grad = FALSE, digits = 2, show_sings = TRUE, show_pip = TRUE, cpp = FALSE
 
 ) {
-  
+
   # x: trait values
   # model: model specifications
   # model_biv: bivariate model specifications
@@ -21,7 +21,7 @@ plot_fitness_sets <- function(
   # digits: rounding to use in plotting bivariate PIPs
   # show_sings: make sure to show singular strategies as part of the trait values explored
   # show_pip: whether to return bivariate PIPs as well
-  
+
   # Note: by bivariate we mean that traits trading off against each other are
   # denoted as separate and independent variables.
 
@@ -30,12 +30,12 @@ plot_fitness_sets <- function(
 
     # Evaluate model parameters
     for (i in seq(pars)) eval(pars[[i]])
-    
+
     # Use the trade-off formula
     rmax - epsilon * x
 
   }
-  
+
   # Note: here that component is fecundity, trading off with stress tolerance.
 
   # Use that function to compute the trade-off counterpart of each trait value
@@ -62,7 +62,7 @@ plot_fitness_sets <- function(
 
       # ... with each singularity found
       xres = find_singularities(model, pars, from = xmin, to = xmax, init, tend, twostep, cpp),
-      
+
       # Compute its bivariate counterpart
       yres = get_y(xres, pars)
 
@@ -157,7 +157,7 @@ plot_fitness_sets <- function(
       # Then...
       d %>% mutate(
 
-        # Find null isoclines by finding the root of bivariate invasion fitness function 
+        # Find null isoclines by finding the root of bivariate invasion fitness function
         newx = map2_dbl(x, y, function(x, y) uniroot_noerr(f, c(x - scalex * xspan, x), y = y, as_na = TRUE, val_only = TRUE)),
         newy = map2_dbl(x, y, function(x, y) uniroot_noerr(g, c(y - scaley * yspan, y), x = x, as_na = TRUE, val_only = TRUE))
 
@@ -199,7 +199,7 @@ plot_fitness_sets <- function(
   LABEL <- function(data) {
 
     # data: the data
-    
+
     # Prepare labels for both traits
     data %>%
       add_labels("xres", "hat(x)") %>%
@@ -212,7 +212,7 @@ plot_fitness_sets <- function(
 
     # data: the data
     # digits: rounding precision
-    
+
     # Round the trait values
     data %>%
       mutate(xres = round(xres, digits), yres = round(yres, digits))

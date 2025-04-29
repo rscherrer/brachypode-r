@@ -39,7 +39,7 @@ p1 <- plot_pip_transect(
 )
 
 # For each simulation...
-data <- map_dfr(list.dirs("../data/overview")[-1], function(dir) {
+data <- map_dfr(list.dirs("../data/branching-point/overview")[-1], function(dir) {
   
   # Read the parameters
   pars <- read_parameters(dir)
@@ -61,7 +61,7 @@ p2 <- data %>%
   labs(color = parse(text = "p[0]"))
 
 # Read census data in one simulation in particular (one with branching)
-data2 <- read_patch_size_data("../data/overview/sim-6")
+data2 <- read_patch_size_data("../data/branching-point/overview/sim-6")
 
 # Plot the numbers of individuals in each patch through time
 p3 <- data2 %>%

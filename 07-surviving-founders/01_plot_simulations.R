@@ -11,7 +11,7 @@ source("../functions.R")
 theme_set(theme_classic())
 
 # For each simulation...
-data <- map_dfr(list.dirs("../data")[-1], function(dir) {
+data <- map_dfr(list.dirs("../data/surviving-founders")[-1], function(dir) {
 
   # Read the parameters
   pars <- read_parameters(dir)

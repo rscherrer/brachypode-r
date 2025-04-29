@@ -10,7 +10,7 @@ theme_set(theme_classic())
 source("../functions.R")
 
 # Load an example simulation
-dir <- "../data/standard/stress-increase-K2-100/sim-5"
+dir <- "../data/climate-change/standard/stress-increase-K2-100/sim-5"
 
 # Plot individual trait values through time
 plot1 <- read_individual_data(dir) %>%

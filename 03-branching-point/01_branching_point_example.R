@@ -52,7 +52,7 @@ p3 <- simdata %>%
   ylab(parse(text = "'Stress tolerance ('*hat(x)*')'"))
 
 # Plot an individual-based stochastic simulation that also branches
-p4 <- read_individual_data("../data/example/sim-1") %>%
+p4 <- read_individual_data("../data/branching-point/example/sim-1") %>%
   filter(time %% 1000 == 0) %>%
   mutate(patch = if_else(patch == 0, "UF", "F")) %>%
   ggplot(aes(x = time, y = x, color = patch)) +
@@ -63,7 +63,7 @@ p4 <- read_individual_data("../data/example/sim-1") %>%
   labs(color = NULL)
 
 # Store the data from that simulation
-stochdata <- read_individual_data("../data/example/sim-1") %>%
+stochdata <- read_individual_data("../data/branching-point/example/sim-1") %>%
   group_by(time) %>%
   summarize(x1 = mean(x[x < mean(x)]), x2 = mean(x[x > mean(x)]))
 

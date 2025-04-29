@@ -28,7 +28,7 @@ pars <- alist(
 p1 <- plot_pip(seq(0, 10, 0.1), model(), pars)
 
 # For each simulation...
-data <- map_dfr(list.dirs("../data")[-1], function(dir) {
+data <- map_dfr(list.dirs("../data/standard-figure/")[-1], function(dir) {
   
   # Read the parameters
   pars <- read_parameters(dir)
@@ -50,7 +50,7 @@ p2 <- data %>%
   labs(color = parse(text = "p[0]"))
 
 # For each simulation...
-data2 <- map_dfr(list.dirs("../data")[-1], function(dir) {
+data2 <- map_dfr(list.dirs("../data/standard-figure/")[-1], function(dir) {
   
   # Read the parameters
   pars <- read_parameters(dir)

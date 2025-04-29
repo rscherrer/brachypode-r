@@ -9,7 +9,7 @@ theme_set(theme_classic())
 source("../functions.R")
 
 # For each simulation...
-data <- map_dfr(list.dirs("../data")[-1], function(dir) {
+data <- map_dfr(list.dirs("../data/two-sites")[-1], function(dir) {
 
   # Read the parameters
   pars <- read_parameters(dir)
@@ -19,7 +19,7 @@ data <- map_dfr(list.dirs("../data")[-1], function(dir) {
     mutate(
       nsites = pars$pgood[1],
       capacityUF = pars$capacities[1],
-      deltac = ifelse(nsites == 2, diff(pars$pgood[-1]), NA),
+      deltac = ifelse(nsites == 2, diff(pars$pgood), NA),
       pgood1 = pars$pgood[2]
     )
 

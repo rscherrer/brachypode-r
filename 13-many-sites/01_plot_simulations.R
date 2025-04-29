@@ -11,7 +11,7 @@ theme_set(theme_classic())
 source("../functions.R")
 
 # For each simulation...
-data <- map_dfr(list.dirs("../data")[-1], function(dir) {
+data <- map_dfr(list.dirs("../data/many-sites")[-1], function(dir) {
 
   # Read parameter values
   pars <- read_parameters(dir)
@@ -53,10 +53,13 @@ data$plot[[1]] <- data$plot[[1]] + rm_axis("x")
 data$plot[[2]] <- data$plot[[2]] + rm_strips("x")
 
 # Combine the plots
-P1 <- wrap_plots(data$plot, ncol = 1)
+P1 <- wrap_plots(data$plot, ncol = 1, guides = "collect")
+
+# Save
+ggsave("plots/many_sites_traits.png", P1, width = 8, height = 5, dpi = 300)
 
 # Now, again for each simulation...
-data2 <- map_dfr(list.dirs("../data")[-1], function(dir) {
+data2 <- map_dfr(list.dirs("../data/many-sites")[-1], function(dir) {
 
   # Read the parameter values
   pars <- read_parameters(dir)
@@ -100,7 +103,10 @@ data2$plot[[1]] <- data2$plot[[1]] + rm_axis("x")
 data2$plot[[2]] <- data2$plot[[2]] + rm_strips("x")
 
 # Combine
-P2 <- wrap_plots(data2$plot, ncol = 1)
+P2 <- wrap_plots(data2$plot, ncol = 1, guides = "collect")
+
+# Save
+ggsave("plots/many_sites_densities.png", P2, width = 8, height = 5, dpi = 300)
 
 # Then again for each set of simulations...
 data <- data %>%
@@ -127,14 +133,7 @@ data$plot2[[1]] <- data$plot2[[1]] + rm_axis("x")
 data$plot2[[2]] <- data$plot2[[2]] + rm_strips("x")
 
 # Combine
-P3 <- wrap_plots(data$plot2, ncol = 1)
-
-# Final patchwork
-P <- wrap_plots(
-  P1, P2, P3, nrow = 1, guides = "collect",
-  widths = c(5, 5, 3)
-) +
-  plot_annotation(tag_levels = "A")
+P3 <- wrap_plots(data$plot2, ncol = 1, guides = "collect")
 
 # Save
-ggsave("many_sites.png", P, width = 13, height = 8, dpi = 300)
+ggsave("plots/many_sites_beeswarm.png", P3, width = 8, height = 5, dpi = 300)

@@ -36,4 +36,4 @@ P <- plot_pip_transect(
 )
 
 # Save
-ggsave("plots/pips_trade_off.png", P, width = 7, height = 3.5, dpi = 300)
+ggsave("plots/pips_trade_off.png", P, width = 7.5, height = 4, dpi = 300)

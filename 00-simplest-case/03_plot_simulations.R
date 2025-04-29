@@ -9,7 +9,7 @@ theme_set(theme_classic())
 source("../functions.R")
 
 # Read mean traits through time
-dirs <- list.dirs("../data")[-1]
+dirs <- list.dirs("../data/simplest-case/")[-1]
 data <- map_dfr(dirs, read_trait_mean_data, .id = "sim")
 
 # Plot the simulations

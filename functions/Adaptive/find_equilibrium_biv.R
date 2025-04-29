@@ -1,5 +1,5 @@
 # Function to find a bivariate demographic equilibrium
-find_equilibrium_biv <- function(x, y, model, pars, init = c(1, 1), tend = 100, twostep = TRUE) {
+find_equilibrium_biv <- function(x, y, model, pars, init = c(1, 1), tend = 100, twostep = TRUE, cpp = FALSE) {
 
   # x, y: trait values
   # model: bivariate model specifications
@@ -7,7 +7,8 @@ find_equilibrium_biv <- function(x, y, model, pars, init = c(1, 1), tend = 100, 
   # init: starting point for equilibrium search
   # tend: number of iterations for the simulation (set zero for no simulation)
   # twostep: whether to run root finding with simulation outcome as starting point
-  
+  # cpp: whether to use C++ code
+
   # Unpack the parameters
   for (i in seq(pars)) eval(pars[[i]])
 
@@ -24,7 +25,7 @@ find_equilibrium_biv <- function(x, y, model, pars, init = c(1, 1), tend = 100, 
 
       # Otherwise use R code
       data <- iterate_biv(model, pars, x, y, tend, N0 = init)
-      
+
       # Gather the results
       N1 <- last(data$N1)
       N2 <- last(data$N2)
@@ -38,7 +39,7 @@ find_equilibrium_biv <- function(x, y, model, pars, init = c(1, 1), tend = 100, 
     return(N)
 
   }
-  
+
   # Note: we get here if we set simulation time to zero.
 
   # System of equations to solve

@@ -11,7 +11,7 @@ theme_set(theme_classic())
 source("../functions.R")
 
 # For each simulation...
-data <- map_dfr(list.dirs("../data")[-1], function(dir) {
+data <- map_dfr(list.dirs("../data/gene-flow")[-1], function(dir) {
 
   # Read the parameters
   pars <- read_parameters(dir)

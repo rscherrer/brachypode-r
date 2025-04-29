@@ -8,9 +8,7 @@ model2 <- function() {
     s2 <- 1 / (1 + exp(a * (theta2 - x))),
     
     # Reproduction in each habitat
-    d <- -log2(1 - epsilon),
-    y <- rmax * ((1 - (x / xmax)^(1 / d))^d),
-    
+    y <- rmax - epsilon * xmax * (x / xmax)^nu,
     r1 <- exp(y * (1 - N[1] / (c * K1))),
     r2 <- exp(y * (1 - N[2] / ((1 - c) * K2))),
     
@@ -30,7 +28,7 @@ model2 <- function() {
     lambda <- c * r1 * s1 + (1 - c) * r2 * s2,
     
     # Useful derivatives
-    dy <- - rmax * (x^((1 - d) / d) / xmax^(1 / d)) * (1 - (x / xmax)^(1 / d))^(d - 1),
+    dy <- -epsilon * xmax^(1 - nu) * nu * x^(nu - 1),
     dr1 <- (1 - N[1] / (c * K1)) * dy * r1,
     dr2 <- (1 - N[2] / ((1 - c) * K2)) * dy * r2,
     ds1 <- a * s1 * (1 - s1),
@@ -40,7 +38,7 @@ model2 <- function() {
     G <- c * (dr1 * s1 + r1 * ds1) + (1 - c) * (dr2 * s2 + r2 * ds2),
     
     # Second derivatives
-    ddy <- dy * ((1 - d) * x^((1 - 2 * d) / d) - x^(2 * (1 - d) / d) / xmax^(1 / d)) / (d * x^((1 - d) / d)),
+    ddy <- -epsilon * xmax^(1 - nu) * nu * (nu - 1) * x^(nu - 2),
     ddr1 <- (1 - N[1] / (c * K1)) * (ddy * r1 + dy * dr1),
     ddr2 <- (1 - N[2] / ((1 - c) * K2)) * (ddy * r2 + dy * dr2),
     dds1 <- a * (1 - 2 * s1) * ds1,

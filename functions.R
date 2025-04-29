@@ -3,4 +3,4 @@
 ## be run from within the various project folders.
 
 # Load all the global functions
-for (f in list.files("../functions", pattern = "\.R$", full.names = TRUE, recursive = TRUE)) source(f)
+for (f in list.files("../functions", pattern = "\\.R$", full.names = TRUE, recursive = TRUE)) source(f)

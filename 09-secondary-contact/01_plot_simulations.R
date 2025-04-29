@@ -11,7 +11,9 @@ theme_set(theme_classic())
 source("../functions.R")
 
 # For each simulation...
-data <- map_dfr(list.dirs("../data")[-1], function(dir) {
+data <- map_dfr(list.dirs("../data/secondary-contact")[-1], function(dir) {
+
+  print(dir)
 
   # Read parameters
   pars <- read_parameters(dir)
@@ -19,7 +21,7 @@ data <- map_dfr(list.dirs("../data")[-1], function(dir) {
   # Read individual traits through time and append key parameters
   read_individual_data(dir) %>%
     mutate(
-      pgood = paste(pars$pgood[-1], collapse = " "),
+      pgood = paste(pars$pgood, collapse = " "),
       allfreq = pars$allfreq
     )
 

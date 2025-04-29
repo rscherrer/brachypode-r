@@ -40,7 +40,7 @@ plot <- data %>%
   scale_fill_gradient(low = "black", high = "white") +
   guides(fill = guide_colorbar(barheight = 5, title = "AMI", order = 1)) +
   geom_tile(aes(color = BP), size = 1, data = data %>% filter(BP == "BP")) +
-  scale_color_manual(values = "lightsalmon") +
+  scale_color_manual(values = "lightsalmon", name = NULL) +
   labs(color = NULL) +
   ggnewscale::new_scale_color() +
   geom_point(data = data %>% filter(nsims > 0), aes(color = propdiff), size = 2) +
@@ -82,7 +82,7 @@ plot2 <- data %>%
   scale_fill_gradient(low = "black", high = "white") +
   guides(fill = guide_colorbar(barheight = 3, title = "AMI", order = 1)) +
   geom_tile(aes(color = BP), size = 1, data = data %>% filter(BP == "BP")) +
-  scale_color_manual(values = "lightsalmon") +
+  scale_color_manual(values = "lightsalmon", name = NULL) +
   labs(color = NULL) +
   ggnewscale::new_scale_color() +
   geom_point(data = data %>% filter(!is.na(convarea)), aes(color = convarea, size = ddimcoal)) +

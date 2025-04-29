@@ -91,13 +91,23 @@ plot <- bdata %>%
   ) +
   facet_grid(K2_lab ~ c_lab, labeller = label_parsed) +
   geom_tile(aes(fill = group)) +
-  scale_fill_manual(values = c("lightsalmon", "lightblue", "salmon3", "steelblue")) +
+  scale_fill_manual(values = c("lightsalmon", "lightblue", "salmon3", "steelblue"), name = NULL) +
   labs(fill = NULL) +
-  new_scale_fill() +
+  new_scale_fill()
+
+# Hack to align both layers properly
+data <- data %>%
+  mutate(
+    theta2_ = as.numeric(factor(theta2)) + 2,
+    epsilon_ = as.numeric(factor(epsilon))
+  )
+
+# Scatter pies
+plot <- plot +
   geom_scatterpie(
     aes(
-      x = as.numeric(factor(theta2)) + 2, # hack to align both layers properly
-      y = as.numeric(factor(epsilon)),
+      x = theta2_,
+      y = epsilon_,
       r = 0.4
     ),
     cols = c("N[11]", "N[12]", "N[21]", "N[22]"),
@@ -106,13 +116,12 @@ plot <- bdata %>%
   facet_grid(K2_lab ~ c_lab, labeller = label_parsed) +
   scale_fill_manual(
     values = c("forestgreen", "darkolivegreen3", "gold2", "orange"),
-    labels = function(x) parse(text = x)
+    labels = function(x) parse(text = x), name = NULL
   ) +
   scale_x_continuous(labels = 0:5, breaks = 0:5, limits = c(-0.5, 5.5)) +
   scale_y_continuous(labels = c(0, 0.001, 0.01, 0.1, 0.2, 0.4), breaks = 0:5, limits = c(-0.5, 5.5)) +
   xlab(parse(text = "theta[UF]")) +
-  ylab(parse(text = "epsilon")) +
-  labs(fill = NULL)
+  ylab(parse(text = "epsilon"))
 
 # Save
 ggsave("plots/css_coexistence_scatterpie.png", plot, width = 6, height = 4, dpi = 300)

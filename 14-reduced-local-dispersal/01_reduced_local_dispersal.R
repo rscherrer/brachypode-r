@@ -38,7 +38,6 @@ plot_pip_transect(
   extra = FALSE
 )
 
-
 # For different values of local dispersal...
 data <- map_dfr(c(0, 0.5, 0.9), function(phi) {
   
