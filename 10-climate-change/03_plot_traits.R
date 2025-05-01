@@ -25,8 +25,14 @@ for (i in 1:3) plot_long[[i]] <- plot_long[[i]] + ylim(c(0, 10))
 # Remove some labels
 for (i in c(1, 3)) plot[[i]] <- plot[[i]] + ylab(NULL)
 
+# Number of tags
+ntags <- length(plot)
+
 # Combine
 plot <- wrap_plots(plot, plot_long, nrow = 1, widths = c(4, 1), guides = "collect")
 
+# Tag
+plot <- plot + plot_annotation(tag_levels = LETTERS[1:ntags])
+
 # Save
-ggsave("plots/climate_change_traits.png", plot, width = 10, height = 8, dpi = 300)
+ggsave("plots/climate_change_traits.png", plot, width = 10, height = 9, dpi = 300)

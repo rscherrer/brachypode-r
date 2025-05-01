@@ -241,5 +241,8 @@ P_top <- wrap_plots(p1.1, p2.1, p3.1, nrow = 1, guides = "collect")
 # Combine
 P_full <- wrap_plots(P_top, P, ncol = 1, heights = c(1, 8))
 
+# Tag
+P_full <- P_full + plot_annotation(tag_levels = list(c("A", "B", "C")))
+
 # Save
 ggsave("plots/climate_change_pips.png", P_full, width = 7.5, height = 15, dpi = 300)

@@ -227,8 +227,14 @@ simplots[[5]] <- simplots[[5]] + ggtitle("Only\nunder the shrubs") + theme(plot.
 # Combine
 P_top <- wrap_plots(simplots, nrow = 1, guides = "collect")
 
+# Number of tags
+ntags <- length(P_top)
+
 # Combine
 P_full <- wrap_plots(P_top, P, ncol = 1, heights = c(1, 8))
+
+# Tag
+P_full <- P_full + plot_annotation(tag_levels = list(LETTERS[1:ntags]))
 
 # Save
 ggsave("plots/climate_change_paceing_pips.png", P_full, width = 12, height = 15, dpi = 300)

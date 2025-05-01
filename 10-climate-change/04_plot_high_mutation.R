@@ -79,5 +79,8 @@ p2 <- p2 + rm_strips("x")
 # Combine
 plot <- wrap_plots(p1, p2, ncol = 1, guides = "collect")
 
+# Tag
+plot <- plot + plot_annotation(tag_levels = list(c("A", "B")))
+
 # Save
-ggsave("plots/climate_change_highmut.png", plot, width = 9, height = 4, dpi = 300)
+ggsave("plots/climate_change_highmut.png", plot, width = 8, height = 5, dpi = 300)
