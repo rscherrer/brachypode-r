@@ -27,14 +27,17 @@ data <- map_dfr(list.dirs("../data/secondary-contact")[-1], function(dir) {
 
 }, .id = "sim")
 
-# Plot the simulations
-plot <- data %>%
-  filter(allfreq == 0.6, time %% 500 == 0) %>%
+# Prepare for plotting
+sim_data <- data %>%
   mutate(pgood = str_c("{", str_replace_all(pgood, " ", ", "), "}")) %>%
   add_labels("pgood", "c") %>%
-  add_labels("deme", "Deme", sep = " ") %>%
+  add_labels("deme", "Deme", sep = " ")
+
+# Plot the simulations
+plot <- sim_data %>%
+  filter(allfreq == 0.6, time %% 500 == 0) %>%
   ggplot(aes(x = time / 1000, y = x, color = factor(deme))) +
-  geom_point(data = data %>% filter(allfreq == 0, time %% 500 == 0), color = "gray80") +
+  geom_point(data = sim_data %>% filter(allfreq == 0, time %% 500 == 0), color = "gray80") +
   geom_point() +
   scale_alpha_continuous(range = c(0.01, 1)) +
   facet_grid(deme_lab ~ pgood_lab, labeller = label_parsed) +

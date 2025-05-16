@@ -69,10 +69,9 @@ stochdata <- read_individual_data("../data/branching-point/example/sim-1") %>%
 
 # Overlay them on top of the MIP
 p2 <- p2 +
-  geom_path(data = simdata, aes(fill = NULL), color = "white") +
-  geom_point(data = simdata, aes(fill = NULL), color = "white") +
   geom_path(data = stochdata, aes(fill = NULL), color = "black") +
-  geom_point(data = stochdata, aes(fill = NULL), color = "black", size = 2)
+  geom_point(data = stochdata, aes(fill = NULL), color = "black", size = 2) +
+  geom_point(data = simdata, aes(fill = NULL), color = "white", alpha = 0.1)
 
 # Combine everything
 P <- wrap_plots(p, p2, p3, p4, ncol = 2, nrow = 2) +

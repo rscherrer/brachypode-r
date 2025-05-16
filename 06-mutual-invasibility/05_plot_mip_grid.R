@@ -25,7 +25,7 @@ pars <- alist(
   a <- 5,
   theta1 <- 0,
   theta2 <- 5,
-  c <- 0.3
+  c <- 0.5
   
 )
 

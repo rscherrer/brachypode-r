@@ -64,7 +64,7 @@ data <- data %>%
 
 # Plot
 plot <- data %>%
-  ggplot(aes(x = pace, y = factor(mutation), fill = 10 * freq)) +
+  ggplot(aes(x = pace, y = factor(mutation), fill = freq / 10)) +
   geom_tile() +
   ylab(parse(text = "'Mutation rate ('*mu*')'")) +
   xlab("Deterioration of the UF patch") +

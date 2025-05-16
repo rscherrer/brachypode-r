@@ -3,11 +3,11 @@ plot_mip <- function(
 
   x, model, pars, init = c(1, 1), tend = 100, twostep = TRUE, passon = FALSE,
   tol = 0.001, field = NULL, model_di = NULL, scale = 0.1, grid = NULL,
-  verbose = TRUE, refined = TRUE, lower = FALSE, col1 = "blue", col2 = "red",
+  verbose = TRUE, refined = TRUE, lower = FALSE, col1 = "royalblue4", col2 = "indianred",
   plotit = TRUE, as_list = FALSE, cpp = FALSE
 
 ) {
-  
+
   # x: trait values to explore
   # model: the model to use
   # pars: parameter values
@@ -59,17 +59,17 @@ plot_mip <- function(
 
         # Compute the dimorphic selection gradient
         G <- get_gradient_di(x1, x2, model_di, pars, rep(init, 2), tend, twostep, cpp)
-        
+
         # Rescale it
         G <- G / sqrt(G[1]^2 + G[2]^2)
-        
+
         # Make it into a table
         return(tibble(G1 = G[1], G2 = G[2]))
 
       })) %>%
       unnest(G)
 
-    # Add a field of tick marks to the plot 
+    # Add a field of tick marks to the plot
     plot <- plot %>% ADDFIELD(fdata, scale)
 
   }

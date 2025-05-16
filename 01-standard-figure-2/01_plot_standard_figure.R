@@ -28,7 +28,7 @@ pars <- alist(
 p1 <- plot_pip(seq(0, 10, 0.1), model(), pars)
 
 # For each simulation...
-data <- map_dfr(list.dirs("../data/standard-figure/")[-1], function(dir) {
+data <- map_dfr(list.dirs("../data/standard-figure-2/")[-1], function(dir) {
   
   # Read the parameters
   pars <- read_parameters(dir)

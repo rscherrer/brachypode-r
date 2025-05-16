@@ -1,4 +1,4 @@
-## Here we produce a figure that summarizes some of the parameters that 
+## Here we produce a figure that summarizes some of the parameters that
 ## determine evolutionary branching, and illustrate what happens then with
 ## some simulations.
 
@@ -14,7 +14,7 @@ source("../functions.R")
 
 # Parameter values
 pars <- alist(
-  
+
   rmax <- 2,
   epsilon <- 0.1,
   K1 <- 2000,
@@ -22,32 +22,32 @@ pars <- alist(
   a <- 5,
   theta1 <- 0,
   theta2 <- 5,
-  c <- 0.3
-  
+  c <- 0.5
+
 )
 
 # Create a series of PIPs across various carrying capacities
 p1 <- plot_pip_transect(
-  par = "K2", 
-  pos = 4, 
-  vals = c(500, 300, 100, 50), 
-  lab = "K[UF]", 
+  par = "K2",
+  pos = 4,
+  vals = c(500, 300, 100, 50),
+  lab = "K[UF]",
   x = seq(0, 10, 0.1),
   model = model(),
-  pars, 
+  pars,
   extra = FALSE
 )
 
 # For each simulation...
 data <- map_dfr(list.dirs("../data/branching-point/overview")[-1], function(dir) {
-  
+
   # Read the parameters
   pars <- read_parameters(dir)
-  
+
   # Read the simulation data
   read_individual_data(dir) %>%
     mutate(allfreq = pars$allfreq)
-  
+
 }, .id = "sim")
 
 # Plot individual phenotypes through time
