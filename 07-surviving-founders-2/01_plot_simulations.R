@@ -65,22 +65,6 @@ ggsave("plots/surviving_founders_lines.png", plot, width = 12, height = 5, dpi =
 
 ############################
 
-# Plot how long it takes before the population goes extinct
-lolliplot <- data %>%
-  group_by(sim) %>%
-  filter(time == max(time)) %>%
-  ggplot(aes(x = allfreq, y = time)) +
-  geom_segment(aes(xend = allfreq), yend = 0) +
-  geom_point() +
-  facet_wrap(. ~ outcrossing_lab, labeller = label_parsed) +
-  xlab(parse(text = "'Initial allele frequency ('*p[0]*')'")) +
-  ylab("End time (generations)")
-
-# Save
-ggsave("plots/surviving_founders_lolliplot.png", lolliplot, width = 5, height = 3, dpi = 300)
-
-############################
-
 # Summarize across patches and demes
 data_smr <- data %>%
   group_by(sim, time, allfreq, allfreq_lab, outcrossing, outcrossing_lab) %>%

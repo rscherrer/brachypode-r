@@ -1,3 +1,3 @@
 ## surviving-founders
 
-Here we look at the persistence time of various starting strategies in a stressful environmnent.
+Here we look at the persistence time of various starting strategies in a stressful environmnent, in a metapopulation setting.
