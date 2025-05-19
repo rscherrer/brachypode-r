@@ -10,8 +10,14 @@ source("../functions.R")
 
 theme_set(theme_classic())
 
+# Paths to the simulations
+paths <- c(
+  "../data/surviving-founders-2/",
+  "../data/surviving-founders-4/"
+)
+
 # Simulation folders
-paths <- list.dirs("../data/surviving-founders-2/", recursive = TRUE)
+paths <- reduce(map(paths, list.dirs), c)
 paths <- paths[str_detect(paths, "sim-")]
 
 # For each simulation...
@@ -23,7 +29,11 @@ data <- map_dfr(
 
     # Read the census data
     read_patch_size_data(dir) %>%
-      mutate(allfreq = pars$allfreq, selfing = pars$selfing)
+      mutate(
+        allfreq = pars$allfreq,
+        selfing = pars$selfing,
+        ndemes = pars$ndemes
+      )
 
   }, .id = "sim"
 )
@@ -44,7 +54,13 @@ FORMAT <- function(data) {
 }
 
 # Format
-data <- data %>% FORMAT()
+data <- data %>% FORMAT() %>% add_labels("ndemes", "n[D]")
+
+# Full data
+data0 <- data
+
+# Multiple sites only
+data <- data %>% filter(ndemes > 1)
 
 # Plot the number of individuals through time
 plot <- data %>%
@@ -66,24 +82,33 @@ ggsave("plots/surviving_founders_lines.png", plot, width = 12, height = 5, dpi =
 ############################
 
 # Summarize across patches and demes
-data_smr <- data %>%
-  group_by(sim, time, allfreq, allfreq_lab, outcrossing, outcrossing_lab) %>%
+data_smr <- data0 %>%
+  group_by(sim, time, allfreq, allfreq_lab, outcrossing, outcrossing_lab, ndemes, ndemes_lab) %>%
   summarize(n = sum(n))
 
+# Plotting function
+PLOTFUN <- function(data) {
+
+  # Plot
+  data %>%
+    ggplot(aes(x = allfreq, y = time, color = n)) +
+    geom_path(aes(group = allfreq)) +
+    geom_point(
+      data = data %>%
+        group_by(sim) %>%
+        filter(time == max(time))
+    ) +
+    facet_grid(ndemes_lab ~ outcrossing_lab, labeller = label_parsed) +
+    xlab(parse(text = "'Initial allele frequency ('*p[0]*')'")) +
+    ylab("End time (generations)") +
+    labs(color = "Pop. size") +
+    scale_color_gradient(low = "gray80", high = "black", limits = c(0, NA))
+
+}
+
 # Plot
-lolliplot2 <- data_smr %>%
-  ggplot(aes(x = allfreq, y = time, color = n)) +
-  geom_path(aes(group = allfreq)) +
-  geom_point(
-    data = data_smr %>%
-      group_by(sim) %>%
-      filter(time == max(time))
-  ) +
-  facet_grid(. ~ outcrossing_lab, labeller = label_parsed) +
-  xlab(parse(text = "'Initial allele frequency ('*p[0]*')'")) +
-  ylab("End time (generations)") +
-  labs(color = "Pop. size") +
-  scale_color_gradient(low = "gray80", high = "black", limits = c(0, NA))
+lolliplot1 <- data_smr %>% filter(ndemes == 1) %>% PLOTFUN()
+lolliplot2 <- data_smr %>% filter(ndemes > 1) %>% PLOTFUN()
 
 ############################
 
@@ -188,14 +213,15 @@ zoom_plot <- wrap_plots(p1 + rm_axis("x"), p2, ncol = 1)
 
 # Combine all
 P <- wrap_plots(
+  lolliplot1,
   lolliplot2,
   wrap_plots(
     P0,
     wrap_plots(trait_plot, zoom_plot, ncol = 1, heights = c(1, 2), guides = "collect"),
     widths = c(5, 6)
-  ), ncol = 1, heights = c(2, 5)
+  ), ncol = 1, heights = c(2, 2, 6)
 ) +
   plot_annotation(tag_levels = "A")
 
 # Save (takes a while)
-ggsave("plots/surviving_founders.png", P, width = 11, height = 8, dpi = 300)
+ggsave("plots/surviving_founders.png", P, width = 11, height = 10, dpi = 300)

@@ -65,16 +65,36 @@ ggsave("plots/surviving_founders_lines.png", plot, width = 12, height = 5, dpi =
 
 ############################
 
+# Parameter values
+pars <- alist(
+
+  rmax <- 2,
+  epsilon <- 0.1,
+  K1 <- 2000,
+  K2 <- 500,
+  a <- 5,
+  theta1 <- 0,
+  theta2 <- 5,
+  c <- 0.1
+
+)
+
+# Generate a PIP
+pip <- plot_pip(seq(0, 10, 0.1), model(), pars)
+
 # Plot how long it takes before the population goes extinct
 lolliplot <- data %>%
   group_by(sim) %>%
   filter(time == max(time)) %>%
-  ggplot(aes(x = allfreq, y = time)) +
-  geom_segment(aes(xend = allfreq), yend = 0) +
-  geom_point() +
-  facet_wrap(. ~ outcrossing_lab, labeller = label_parsed) +
+  ggplot(aes(x = factor(allfreq), y = time, fill = factor(outcrossing))) +
+  geom_bar(stat = "identity", position = "dodge2") +
   xlab(parse(text = "'Initial allele frequency ('*p[0]*')'")) +
-  ylab("End time (generations)")
+  ylab("End time (generations)") +
+  labs(fill = "g") +
+  scale_fill_manual(values = c("gray20", "gray35", "gray50", "gray65", "gray80"))
+
+# Combine
+P <- wrap_plots(pip, lolliplot) + plot_annotation(tag_levels = "A")
 
 # Save
-ggsave("plots/surviving_founders_lolliplot.png", lolliplot, width = 6, height = 4, dpi = 300)
+ggsave("plots/surviving_founders_lolliplot.png", P, width = 8, height = 3, dpi = 300)
