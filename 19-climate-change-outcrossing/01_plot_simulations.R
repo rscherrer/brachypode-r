@@ -66,7 +66,10 @@ data$scenario <- factor(data$scenario, levels = scenarios)
 # Facet labels
 data <- data %>% 
   add_labels("twarming", "Delta*t[W]") %>%
-  mutate(scenario = str_c("'", scenario, "'"))
+  mutate(
+    scenario_lab = str_c("'", scenario, "'"),
+    scenario_lab = fct_reorder(scenario_lab, labels(scenario))
+  )
 
 # Plotting function
 PLOTFUN <- function(data, maxpop = NA) {
@@ -77,7 +80,7 @@ PLOTFUN <- function(data, maxpop = NA) {
   # Plot
   data %>%
     ggplot(aes(x = time, y = factor(outcrossing))) +
-    facet_grid(twarming_lab ~ scenario, labeller = label_parsed) +
+    facet_grid(twarming_lab ~ scenario_lab, labeller = label_parsed) +
     geom_tile(aes(fill = popsize)) +
     scale_fill_gradient(low = "white", high = "black", limits = c(0, maxpop)) +
     xlab("Time (generations)") +
