@@ -65,12 +65,15 @@ data$scenario <- factor(data$scenario, levels = scenarios)
 # Facet labels
 data <- data %>%
   add_labels("outcrossing", "g") %>%
-  mutate(scenario = str_c("'", scenario, "'"))
+  mutate(
+    scenario_lab = str_c("'", scenario, "'"),
+    scenario_lab = factor(scenario_lab, levels = str_c("'", scenarios, "'"))
+  )
 
 # Plot
 plot <- data %>%
   ggplot(aes(x = factor(ndemes), y = factor(twarming))) +
-  facet_grid(scenario ~ outcrossing_lab, labeller = label_parsed) +
+  facet_grid(scenario_lab ~ outcrossing_lab, labeller = label_parsed) +
   geom_tile(aes(fill = time / tend)) +
   scale_fill_gradient(low = "white", high = "black", limits = c(0, NA)) +
   ylab(parse(text = "'Warming time ('*Delta*t[W]*')'")) +
