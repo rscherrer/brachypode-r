@@ -84,4 +84,4 @@ P <- wrap_plots(
   plot_annotation(tag_levels = "A")
 
 # Save
-ggsave("plots/standard_figure.png", P, width = 10, height = 6, dpi = 300)
+ggsave("plots/standard_figure.png", P, width = 7, height = 4.5, dpi = 300)

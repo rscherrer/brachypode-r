@@ -33,7 +33,7 @@ pars0 <- alist(
 )
 
 # Time points
-times <- c(0, 0.3, seq(0.5, 1, 0.1))
+times <- c(0, 0.3, 0.5, 0.6, 0.7, 0.8, 1)
 
 # Make room for multiple parameter sets
 pars <- rep(list(pars0), length(times))
@@ -245,4 +245,4 @@ P_full <- wrap_plots(P_top, P, ncol = 1, heights = c(1, 8))
 P_full <- P_full + plot_annotation(tag_levels = list(c("A", "B", "C")))
 
 # Save
-ggsave("plots/climate_change_pips.png", P_full, width = 7.5, height = 15, dpi = 300)
+ggsave("plots/climate_change_pips.png", P_full, width = 7.2, height = 12, dpi = 300)
