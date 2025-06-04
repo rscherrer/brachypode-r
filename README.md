@@ -34,4 +34,4 @@ This code was developed on Ubuntu Linux 24.04 LTS, in [RStudio](https://posit.co
 
 ## Permissions
 
-Copyright (C) 2025 Raphaël Scherrer (open source license will be added upon publication). This code comes with no guarantee whatsoever.
+Copyright (c) 2025 Raphaël Scherrer (open source license will be added upon publication). This code comes with no guarantee whatsoever.
