@@ -140,6 +140,84 @@ p1 <- plot_pips_si(pars, times)
 p2 <- plot_pips_ld(pars, times)
 p3 <- plot_pips_cs(pars, times)
 
+# Equilibria (approx.)
+eqs1 <- tribble(
+  ~ x, ~ i, ~ set,
+  1, 1, 1,
+  5, 2, 1,
+  2.5, 1, 2,
+  5.2, 2, 2,
+  3.5, 1, 3,
+  5.5, 2, 3,
+  5.5, 2, 4,
+  5.7, 2, 5,
+  6, 2, 6
+)
+
+# Second plot
+eqs2 <- tribble(
+  ~ x, ~ i, ~ set,
+  1, 1, 1,
+  5, 2, 1,
+  2.5, 1, 2,
+  5.8, 2, 2,
+  3.5, 1, 3,
+  6.4, 2, 3,
+  4, 1, 4,
+  6.7, 2, 4,
+  4.5, 1, 5,
+  6.9, 2, 5,
+  5, 1, 6,
+  7.3, 2, 6,
+  8.2, 2, 7
+)
+
+# Third
+eqs3 <- tribble(
+  ~ x, ~ i, ~ set,
+  1, 1, 1,
+  5.1, 2, 1,
+  1, 1, 2,
+  5.5, 2, 2,
+  1, 1, 3,
+  5.7, 2, 3,
+  1, 1, 4,
+  5.8, 2, 4,
+  1, 1, 5,
+  5.9, 2, 5,
+  5.9, 2, 6,
+  6, 2, 7
+)
+
+# Function to complete the table
+complete_eqs <- function(eqs) {
+  
+  # Tweak
+  eqs %>% 
+    mutate(
+      xres = x,
+      i = as.factor(i)
+    )
+  
+}
+
+# Function to hack points in
+hack_points <- function(plot, points) {
+  
+  # Hack some points in
+  plot +
+    geom_point(data = points, aes(fill = NULL, color = i), alpha = 0.6, size = 10) +
+    guides(color = "none", fill = guide_legend(override.aes = list(size = 2, color = c("gray20", "gray50", "gray80"))))
+  
+}
+
+# Add points
+p1 <- p1 %>% hack_points(complete_eqs(eqs1 %>% mutate(set_lab = unique(p1$data$set_lab)[set])))
+p2 <- p2 %>% hack_points(complete_eqs(eqs2 %>% mutate(set_lab = unique(p2$data$set_lab)[set], set_lab2 = unique(p2$data$set_lab2)[set])))
+p3 <- p3 %>% hack_points(complete_eqs(eqs3 %>% mutate(set_lab = unique(p3$data$set_lab)[set])))
+
+# Note: Equilibrium points are manually added based on visual inspection.
+
 # Tweak
 p1 <- p1 + theme(legend.position = "none")
 p2 <- p2 + rm_axis("y") + theme(legend.position = "none")

@@ -32,9 +32,10 @@ eqs <- tibble(x = c(1, 5.5), xres = x, i = as.factor(1:2))
 
 # Hack some points in
 p1 <- p1 + 
-  geom_point(data = eqs, aes(fill = NULL, color = i), alpha = 0.3, size = 10) +
-  geom_point(data = eqs, aes(fill = NULL, color = i), alpha = 0.3, size = 10) +
+  geom_point(data = eqs, aes(fill = NULL, color = i), alpha = 0.6, size = 10) +
   guides(color = "none", fill = guide_legend(override.aes = list(size = 2, color = c("gray20", "gray50", "gray80"))))
+
+# Note: Equilibrium points are manually added based on visual inspection.
 
 # For each simulation...
 data <- map_dfr(list.dirs("../data/standard-figure/")[-1], function(dir) {
