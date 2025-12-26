@@ -30,7 +30,7 @@ In addition the following non-CRAN package was used:
 
 ## About
 
-This code was developed on Ubuntu Linux 24.04 LTS, in [RStudio](https://posit.co/download/rstudio-desktop/) 2024.12.1 and [Visual Studio Code](https://code.visualstudio.com/) 1.99.0 ([R extension](https://marketplace.visualstudio.com/items/?itemName=REditorSupport.r) 2.8.5), with [R](https://www.r-project.org/) 4.3.3 compiled on Linux with [GCC](https://gcc.gnu.org/) 13.2.0. For code development the following packages [devtools](https://devtools.r-lib.org/) 2.4.5 and [languageserver](https://cran.r-project.org/web/packages/languageserver/index.html) 0.3.16 were used. Occasional use was made of [ChatGPT](https://chatgpt.com/) and [GitHub Copilot](https://github.com/features/copilot) in the development of this code.
+This code was developed on Ubuntu Linux 24.04 LTS, in [RStudio](https://posit.co/download/rstudio-desktop/) 2024.12.1 and [Visual Studio Code](https://code.visualstudio.com/) 1.99.0 ([R extension](https://marketplace.visualstudio.com/items/?itemName=REditorSupport.r) 2.8.5), with [R](https://www.r-project.org/) 4.3.3 compiled on Linux with [GCC](https://gcc.gnu.org/) 13.2.0. For code development the packages [devtools](https://devtools.r-lib.org/) 2.4.5 and [languageserver](https://cran.r-project.org/web/packages/languageserver/index.html) 0.3.16 were used. Occasional use was made of [ChatGPT](https://chatgpt.com/) and [GitHub Copilot](https://github.com/features/copilot) in the development of this code.
 
 ## Permissions
 
