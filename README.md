@@ -34,4 +34,6 @@ This code was developed on Ubuntu Linux 24.04 LTS, in [RStudio](https://posit.co
 
 ## Permissions
 
-Copyright (c) 2025 Raphaël Scherrer (open source license will be added upon publication). This code comes with no guarantee whatsoever.
+Copyright (c) 2025, Raphaël Scherrer.
+
+This code is licensed under the MIT license. See [license file](LICENSE.txt) for details. The data and figures in this repository are licensed under the CC-BY 4.0 license (see [here](LICENSE_DATA.txt)). This code comes with no guarantee whatsoever.
