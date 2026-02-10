@@ -2,6 +2,7 @@
 
 This is the [R](https://www.r-project.org/) code used to perform the analyses of the [brachypode](https://github.com/rscherrer/brachypode) project.
 
+[![DOI](https://img.shields.io/badge/DOI-10.32942/X2WW8P-blue)](https://doi.org/10.32942/X2WW8P)
 [![Zenodo](https://img.shields.io/badge/Zenodo-10.5281/zenodo.18568184-blue)](https://doi.org/10.5281/zenodo.18568184)
 
 ## Description
@@ -36,7 +37,7 @@ This code was developed on Ubuntu Linux 24.04 LTS, in [RStudio](https://posit.co
 
 ## Notes
 
-A version of this repository (incl. simulated data) has been archived at Zenodo and can be accessed via the following [link](https://doi.org/10.5281/zenodo.18568184).
+A version of this repository (incl. simulated data) has been archived at Zenodo and can be accessed via the following [link](https://doi.org/10.5281/zenodo.18568184). The preprint associated with this set of analyses can be found [here](https://doi.org/10.32942/X2WW8P).
 
 ## Permissions
 
